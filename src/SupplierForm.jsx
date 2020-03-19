@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form, Control, actions } from 'react-redux-form/immutable';
-import { AutoComplete } from 'material-ui';
+import { AutoComplete, TextField } from 'material-ui';
 import { getCountries, getCities } from './creator';
 import { isEqual } from 'lodash';
 
@@ -89,7 +89,20 @@ class SupplierForm extends Component {
   render() {
     return (
       <Form model="supplier">
+
         <div className="modal-container">
+          <div className="modal-item">
+            <Control
+              model=".name"
+              component={TextField}
+              floatingLabelText="Name"
+              floatingLabelFixed
+              mapProps={{
+                value: (props) => props.viewValue,
+                errorText: this.mapError
+              }}
+            />
+          </div>
           <div className="modal-item">
             <Control
               model=".countryName"
